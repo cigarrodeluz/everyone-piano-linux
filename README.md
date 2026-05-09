@@ -2,153 +2,146 @@
 
 Run Everyone Piano on Linux through a dedicated Wine prefix.
 
-This repository does not redistribute Everyone Piano or Wine. It provides scripts and documentation to install the official Everyone Piano Windows installer into a Linux-friendly Wine setup.
+This repository does not redistribute Everyone Piano or Wine. It only provides scripts and documentation that install the official Everyone Piano Windows installer into a Wine setup that works reliably on Linux.
 
-## Explicacao Simples
+## Simple Explanation
 
-Este ZIP nao e o Everyone Piano.
+This ZIP is not Everyone Piano.
 
-Este ZIP e um ajudante para instalar e abrir o Everyone Piano no Linux do jeito certo pelo Wine.
+This ZIP is a helper that installs and launches Everyone Piano on Linux through Wine with the correct compatibility settings.
 
-Voce precisa ter:
+You need:
 
-- Wine instalado no Linux
-- O instalador do Everyone Piano baixado, por exemplo `EveryonePiano2.5.9.4_setup.exe`
+- Wine installed on Linux
+- The Everyone Piano installer downloaded, for example `EveryonePiano2.5.9.4_setup.exe`
 
-Depois de baixar o ZIP deste repositorio:
+After downloading this repository as a ZIP:
 
-1. Extraia o ZIP.
-2. Abra um terminal dentro da pasta extraida.
-3. Rode:
+1. Extract the ZIP.
+2. Open a terminal inside the extracted folder.
+3. Run:
 
    ```sh
    ./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.exe
    ```
 
-4. Depois abra o programa com:
+4. Start Everyone Piano with:
 
    ```sh
    everyone-piano-linux
    ```
 
-Se voce baixou o Everyone Piano como `.zip`, pode passar o ZIP direto:
+If your Everyone Piano download is a `.zip` file, you can pass the ZIP directly:
 
 ```sh
 ./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.zip
 ```
 
-Se voce ja instalou o Everyone Piano antes e ele esta funcionando, voce nao precisa deste repositorio. Se ele abre e da erro no Wine, use este repositorio para instalar de novo em um Wine separado e configurado para funcionar.
+If Everyone Piano is already installed and working, you do not need this repository. If it opens and crashes under Wine, use this repository to reinstall it in a separate Wine prefix configured for compatibility.
 
-## O Que Acontece Quando Voce Roda O Comando
+## What Happens When You Run The Command
 
-Quando voce roda:
+When you run:
 
 ```sh
 ./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.exe
 ```
 
-o script faz isto automaticamente:
+the script automatically:
 
-1. Confere se o Wine esta instalado.
-2. Cria uma instalacao separada do Wine so para o Everyone Piano em:
+1. Checks whether Wine is installed.
+2. Creates a separate Wine installation area only for Everyone Piano:
 
    ```text
    ~/.local/share/everyone-piano-linux/wineprefix
    ```
 
-3. Configura essa instalacao como Wine 32-bit.
-4. Configura o Wine para fingir que e Windows XP, porque isso evita o erro que fazia o Everyone Piano fechar.
-5. Executa o instalador do Everyone Piano em modo silencioso.
-6. Cria um comando chamado:
+3. Configures that Wine prefix as 32-bit.
+4. Sets Wine to behave like Windows XP, which avoids the startup crash seen with newer Wine audio paths.
+5. Runs the Everyone Piano installer silently.
+6. Creates a command named:
 
    ```sh
    everyone-piano-linux
    ```
 
-7. Cria um atalho no menu de aplicativos do Linux.
+7. Creates a desktop launcher in the Linux application menu.
 
-Depois disso, voce nao precisa abrir o instalador de novo. Para usar o piano, basta rodar:
+After that, you do not need to open the installer again. To use the piano, run:
 
 ```sh
 everyone-piano-linux
 ```
 
-## Links
+## Official Links
 
 - Everyone Piano official download page: https://www.everyonepiano.com/download.html
 - WineHQ official download page: https://www.winehq.org/download
 - Extra link notes: [docs/LINKS.md](docs/LINKS.md)
 
-## What This Does
+## Install Wine
 
-- Creates an isolated Wine prefix at `~/.local/share/everyone-piano-linux/wineprefix`
-- Forces the prefix to 32-bit with `WINEARCH=win32`
-- Sets the Wine Windows version to `winxp`
-- Installs Everyone Piano silently from your downloaded installer
-- Creates a launcher named `everyone-piano-linux`
-- Adds a desktop entry to your application menu
+Use your Linux distribution packages or the official WineHQ instructions:
 
-The Windows XP setting is intentional. In testing, Everyone Piano started crashing in Wine's newer audio path unless the prefix was set to `winxp`.
+https://www.winehq.org/download
 
-## Install
+On Debian/Ubuntu-like systems, this repository also includes a helper:
 
-1. Install Wine.
+```sh
+./scripts/install-wine-ubuntu.sh --yes
+```
 
-   Use your distro packages or WineHQ:
+## Install Everyone Piano
 
-   https://www.winehq.org/download
+Download Everyone Piano from the official page:
 
-   On Debian/Ubuntu-like systems, this repo includes a helper:
+https://www.everyonepiano.com/download.html
 
-   ```sh
-   scripts/install-wine-ubuntu.sh --yes
-   ```
+Then run:
 
-2. Download Everyone Piano from the official page:
+```sh
+./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.exe
+```
 
-   https://www.everyonepiano.com/download.html
+ZIP installers are also accepted:
 
-3. Run the installer script:
+```sh
+./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.zip
+```
 
-   ```sh
-   scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.exe
-   ```
-
-   ZIP installers are also accepted:
-
-   ```sh
-   scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.zip
-   ```
-
-4. Start Everyone Piano:
-
-   ```sh
-   everyone-piano-linux
-   ```
-
-   Or:
-
-   ```sh
-   scripts/run.sh
-   ```
-
-## Install From A URL
+## Install From A Direct URL
 
 If you have a direct installer URL:
 
 ```sh
-scripts/install.sh "https://example.com/EveryonePiano2.5.9.4_setup.exe"
+./scripts/install.sh "https://example.com/EveryonePiano2.5.9.4_setup.exe"
 ```
 
-Prefer the official Everyone Piano page when possible. Direct mirrors can change or be unavailable by region.
+Prefer the official Everyone Piano download page when possible. Direct mirrors can change or be unavailable depending on your region.
 
-## Diagnose
+## Start Everyone Piano
+
+After installation:
 
 ```sh
-scripts/diagnose.sh
+everyone-piano-linux
 ```
 
-Expected important lines:
+Or from inside this repository:
+
+```sh
+./scripts/run.sh
+```
+
+## Diagnose Problems
+
+Run:
+
+```sh
+./scripts/diagnose.sh
+```
+
+Important expected lines:
 
 ```text
 #arch=win32
@@ -156,11 +149,23 @@ Version    REG_SZ    winxp
 application.name = "EveryonePiano"
 ```
 
+If `application.name = "EveryonePiano"` appears under the audio section, Wine created an audio stream for the app.
+
 ## Uninstall
 
 ```sh
-scripts/uninstall.sh --yes
+./scripts/uninstall.sh --yes
 ```
+
+This removes the dedicated Wine prefix, the `everyone-piano-linux` launcher, and the desktop entry created by the installer script.
+
+## Tested Setup
+
+- Wine 10.0 on Linux
+- Everyone Piano 2.5.9.4
+- Dedicated 32-bit Wine prefix
+- Windows version: `winxp`
+- PipeWire/PulseAudio audio output
 
 ## Publish To GitHub
 
@@ -172,14 +177,6 @@ gh repo create everyone-piano-linux --public --source=. --remote=origin --push
 ```
 
 If you prefer a private repository, replace `--public` with `--private`.
-
-## Tested Setup
-
-- Wine 10.0 on Linux
-- Everyone Piano 2.5.9.4
-- Dedicated 32-bit Wine prefix
-- Windows version: `winxp`
-- PipeWire/PulseAudio audio output
 
 ## Legal
 
