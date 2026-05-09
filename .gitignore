@@ -1,0 +1,16 @@
+# Local installers and generated Wine data.
+*.exe
+*.zip
+*.msi
+wineprefix/
+.cache/
+
+# Runtime logs.
+*.log
+*.xwd
+*.png
+
+# Editor/system noise.
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Everyone Piano Linux
+Comment=Run Everyone Piano on Linux through a dedicated Wine prefix
+Exec=everyone-piano-linux
+Type=Application
+Categories=Audio;Music;Education;
+StartupNotify=true
+StartupWMClass=everyonepiano.exe
+Icon=applications-multimedia
+
