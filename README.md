@@ -39,6 +39,40 @@ Se voce baixou o Everyone Piano como `.zip`, pode passar o ZIP direto:
 
 Se voce ja instalou o Everyone Piano antes e ele esta funcionando, voce nao precisa deste repositorio. Se ele abre e da erro no Wine, use este repositorio para instalar de novo em um Wine separado e configurado para funcionar.
 
+## O Que Acontece Quando Voce Roda O Comando
+
+Quando voce roda:
+
+```sh
+./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.exe
+```
+
+o script faz isto automaticamente:
+
+1. Confere se o Wine esta instalado.
+2. Cria uma instalacao separada do Wine so para o Everyone Piano em:
+
+   ```text
+   ~/.local/share/everyone-piano-linux/wineprefix
+   ```
+
+3. Configura essa instalacao como Wine 32-bit.
+4. Configura o Wine para fingir que e Windows XP, porque isso evita o erro que fazia o Everyone Piano fechar.
+5. Executa o instalador do Everyone Piano em modo silencioso.
+6. Cria um comando chamado:
+
+   ```sh
+   everyone-piano-linux
+   ```
+
+7. Cria um atalho no menu de aplicativos do Linux.
+
+Depois disso, voce nao precisa abrir o instalador de novo. Para usar o piano, basta rodar:
+
+```sh
+everyone-piano-linux
+```
+
 ## Links
 
 - Everyone Piano official download page: https://www.everyonepiano.com/download.html
