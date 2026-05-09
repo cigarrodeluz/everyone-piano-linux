@@ -4,6 +4,41 @@ Run Everyone Piano on Linux through a dedicated Wine prefix.
 
 This repository does not redistribute Everyone Piano or Wine. It provides scripts and documentation to install the official Everyone Piano Windows installer into a Linux-friendly Wine setup.
 
+## Explicacao Simples
+
+Este ZIP nao e o Everyone Piano.
+
+Este ZIP e um ajudante para instalar e abrir o Everyone Piano no Linux do jeito certo pelo Wine.
+
+Voce precisa ter:
+
+- Wine instalado no Linux
+- O instalador do Everyone Piano baixado, por exemplo `EveryonePiano2.5.9.4_setup.exe`
+
+Depois de baixar o ZIP deste repositorio:
+
+1. Extraia o ZIP.
+2. Abra um terminal dentro da pasta extraida.
+3. Rode:
+
+   ```sh
+   ./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.exe
+   ```
+
+4. Depois abra o programa com:
+
+   ```sh
+   everyone-piano-linux
+   ```
+
+Se voce baixou o Everyone Piano como `.zip`, pode passar o ZIP direto:
+
+```sh
+./scripts/install.sh ~/Downloads/EveryonePiano2.5.9.4_setup.zip
+```
+
+Se voce ja instalou o Everyone Piano antes e ele esta funcionando, voce nao precisa deste repositorio. Se ele abre e da erro no Wine, use este repositorio para instalar de novo em um Wine separado e configurado para funcionar.
+
 ## Links
 
 - Everyone Piano official download page: https://www.everyonepiano.com/download.html
